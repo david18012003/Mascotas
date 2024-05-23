@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document API MADAC-Coffee </title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+
+    <h1> Documentacion API Mascotas</h1>
+    <hr>
+    <h2> Modulo Pets </h2>
+    <hr>
+    
+    <h3> Requerimiento registrar Pets </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 1 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Registrar Pets </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /pet/crear </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite registrar nuevos Pets al sistema</td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Post </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td>
+                Json : 
+                    {
+                        "Nombre":"firulais",
+                        "race_id":"2",
+                        category_id":"1",
+                        "Photo":"fotoFirulais.svg",
+                        "gender_id":"2"
+
+                   }
+            </td>
+        </tr>
+        <tr>
+            <td>Respuesta Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Json: 
+                {
+                    "mensaje": "Pet registrado con exito!!"
+                },
+
+                Incorrecto:
+                Status: 404
+                Body Json: 
+                {
+                    "mensaje": "No se pudo registrar el pet"
+                },
+
+                Error:
+                Status: 500
+                Body Json:
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Cesar David Carrillo </td>
+        </tr>
+    </table>
+
+
+    <hr>
+
+    <h3> Requerimiento listar Pets: </h3>
+    <table>
+        <tr>
+            <td>Numero</td>
+            <td> 2 </td>
+        </tr>
+        <tr>
+            <td>Nombre del servicio</td>
+            <td>Listar Pets</td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>/pet/listar</td>
+        </tr>
+        <tr>
+            <td>Descripción</td>
+            <td>Permite listar todos los pets registrados en la base de datos</td>
+        </tr>
+        <tr>
+            <td>Verbo http</td>
+            <td>Get</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td>Administrador</td>
+        </tr>
+        <tr>
+            <td>Petición body-form-data </td>
+            <td>Null</td>
+        </tr>
+        <tr>
+            <td>Respuesta json</td>
+            <td>
+                Correcto :
+                Status: 200
+                Json : 
+                {
+                    "pets": [
+                        {
+                            "nombre": "lucas",
+                            "id": 38,
+                            "race_name": "chihuahua",
+                            "category_name": "catdos",
+                            "photo": "photo-sm-1.svg",
+                            "gender_name": "hembra"
+                        },
+
+                },
+
+                Incorrecto : 
+                Status : 404
+                Body Json : 
+                {
+                    "mensaje":"no hay pets registrados"
+                },
+
+                Error:
+                Status: 500
+                Body: Json :
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Cesar David Carrillo </td>
+        </tr>
+    </table>
+    
+    
+    <hr>
+
+    <h3> Requerimiento actualizar Pets </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 3 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Actualizar Pets </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /pet/actualizar/39 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite actualizar los Pets registrados en la base de datos </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Put </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td>
+                Json : 
+                {
+                    "Nombre":"firulais2",
+                    "race_id":"2",
+                    category_id":"1",
+                    "Photo":"fotoFirulais2.svg",
+                    "gender_id":"2"
+
+               }
+            </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto:
+                Status: 201
+                Body Json:
+                {
+                    "mensaje": "Se actualizo la mascota correctamente"
+                },
+
+                Incorrecto:
+                Status: 403
+                Body json: 
+                {
+                    "mensaje": "No se pudo actualizar la mascota"
+                },
+
+                Error:
+                Status: 500,
+                Body Json :
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Cesar David Carrillo </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3> Requerimiento eliminar pets </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 4 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Eliminar pets </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /pet/eliminar/38 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite Eliminar los pets que estan en la base de datos </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Delete </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td> Null </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Body Json: 
+                {
+                    "mensaje": "Se elimino la mascota"
+                },
+
+                Incorrecto:
+                Status: 404
+                Body Json: 
+                {
+                    "mensaje": "No se pudo eliminar la mascota"
+                },
+
+                Error:
+                Status: 500
+                Body Json: 
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Cesar David Carrillo </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3> Requerimiento buscar pet </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 5 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Buscar pet </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /pet/buscar/38 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite buscar un pet en especifico por su identificacion </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> get </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Peticion body-form-data </td>
+            <td> Null </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Body Json:
+                "mascota": [
+                        {
+                            "nombre": "pedro",
+                            "id": 33,
+                            "race_name": "bulldog",
+                            "category_name": "catdos",
+                            "photo": "photo-lg-1.svg",
+                            "gender_name": "Macho"
+                        }
+                    ]
+
+
+                Incorrecto:
+                Status: 404
+                Body Json:
+                {
+                    "mensaje":"Error al buscar la mascota"
+                },
+
+                Error:
+                Status: 500
+                Body Json:
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Cesar David Carrillo </td>
+        </tr>
+    </table>
+</body>
+</html>
